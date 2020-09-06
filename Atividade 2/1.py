@@ -11,14 +11,13 @@ import re
 filename = "toxinsNCBI.fna"
 filename1 = "toxins_3-5.fna"
 
-#seq = re.compile ("](\w)>")
-
 #lendo o arquivo de sequências
 with open(filename) as fp:
     arquivo = fp.readlines() 
 
 #transformando o arquivo em string
 sequencia = ' '.join(arquivo)
+sequencia = sequencia +'\n'
 
 #dividindo cada fita
 fitaCodificadora = re.split(">lcl", sequencia)
@@ -46,7 +45,7 @@ for i in range(1,len(fitaCodificadora)):#lista começa no 1
             letras[j] = re.sub("G", "C",letras[j]) #string_seq
 
         string_letras = ''.join(letras)#convertendo para string
-        #escrevendo no arquivo
-        
+
+    #escrevendo no arquivo  
     with open(filename1, "a") as fp:#Insere nosvos dados no final do arquivo 
-        fp.write('\n>lcl' + seq[0] + ']\n'+ string_letras[::-1] + '\n' )
+        fp.write('\n>lcl' + seq[0] + ']'+ string_letras[::-1] )
