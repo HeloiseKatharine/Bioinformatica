@@ -22,11 +22,6 @@ sequencia = sequencia +'\n'
 #dividindo cada fita
 fitaCodificadora = re.split(">lcl", sequencia)
 
-a = re.compile("A")
-t = re.compile("T")
-c = re.compile("C")
-g = re.compile("G")
-
 string_seq = ''
 
 for i in range(1,len(fitaCodificadora)):#lista começa no 1 
